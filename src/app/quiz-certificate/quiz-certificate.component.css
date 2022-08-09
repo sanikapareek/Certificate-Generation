@@ -1,0 +1,21 @@
+.nav-item{
+    color: black;
+}
+
+.img1{
+    background-image: url("/assets/certificate_image.jpg");
+    background-repeat: no-repeat;
+    margin-top: 80px;
+    margin-left: 350px;
+    /* background-size: 500px 600px; */
+    
+}
+.login_btn {
+    width: 30%;
+    background: rgba(119, 119, 250, 0.904) ;
+    color: white !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}

@@ -1,0 +1,25 @@
+.btn-login{
+    background-color: rgba(119, 119, 250, 0.904);
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+}
+.firstP{
+    margin-top: 150px;
+}
+
+h1, p{
+    text-align: center;
+    margin-left: 50px;
+}
+p{
+    font-size: 120%;
+}
+img{
+    margin-right: 50px;
+}
+
+a{
+    font-size: 110%;
+    font-style: bold;
+}

@@ -1,0 +1,183 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a  (click)="contactus()">Contact Us</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+            <a (click)="aboutus()">About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="report()">Report Generation</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="adduser()">Add User</a>
+          </li>
+      </ul>
+      <div style="margin-right: 10px;">{{adminname}}
+        <span  style="background-color: transparent;border:none; " ><i class="fas fa-user" ></i></span></div>
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+        </form>
+
+      
+      
+    </div>
+  </nav>
+
+  <div class="col-sm-12 col-md-6 mb-3" style="margin-top: 10px;float: left;">
+    <label class="form-label" for="IssuDate">Report of Date </label>
+    <input type="date"id="IssuDate"class="form-control" [(ngModel)]="curr_date" name="curr_date"/>
+    
+ </div>
+
+ <form style="margin-left: 800px;margin-top: 40px;">
+    <button type="button" name="button" class="btn login_btn" (click)="reportGenerate()">Generate Report</button>
+ </form>
+<div *ngIf="show1" style="margin-top: 40px;">
+    <h3 style="text-align: center;font-family:cursive;">Marriage Certificate</h3>
+    <br>
+    <table >
+        <tr>
+            <th>Husband's Name</th>
+            <th>Husband's Religion</th>
+            <th>Husband's Status</th>
+            <th>Husband's DOB</th>
+            <th>Husband's Address</th>
+            <th>Wife's Name</th>
+            <th>Wife's Religion</th>
+            <th>Wife's Status</th>
+            <th>Wife's DOB</th>
+            <th>Wife's Address</th>
+            <th>Date of Marriage</th>
+            <th>Email ID of Husband</th>
+            <th>Issue Date</th>
+    
+          </tr>
+        <tr *ngFor="let item of marriage" >
+           <td>{{item.husband_name}}</td>
+           <td>{{item.h_religion}}</td>
+           <td>{{item.h_status}}</td>
+           <td>{{item.h_birth}}</td>
+           <td>{{item.h_street}},{{item.h_city}},{{item.h_state}},{{item.h_zip}}</td>
+           <td>{{item.wife_name}}</td>
+           <td>{{item.w_religion}}</td>
+           <td>{{item.w_status}}</td>
+           <td>{{item.w_birth}}</td>
+           <td>{{item.w_street}},{{item.w_city}},{{item.w_state}},{{item.w_zip}}</td>
+           <td>{{item.marriage_date}}</td>
+           <td>{{item.mail}}</td>
+           <td>{{item.m_date}}</td>
+       </tr>
+    </table>
+    <br><br>
+   <button type="submit" class="btn login_btn" style="margin-left: 600px; width: fit-content;" (click)="downloadFile_marriage()">Download Report of Marriage Certificate</button>
+    <br><br>
+   <h3 style="text-align: center;font-family:cursive;">Leaving Certificate</h3>
+   <br>
+   <table>
+    <tr>
+        <th>Name</th>
+        <th>Mother's Name</th>
+        <th>Enrollment No</th>
+        <th>Name of School/College</th>
+        <th>State</th>
+        <th>Nationality</th>
+        <th>Caste</th>
+        <th>Birth Place</th>
+        <th>DOB</th>
+        <th>Admission Date</th>
+        <th>School Leaving Date</th>
+        <th>Reason</th>
+        <th>Email ID</th>
+        <th>Issue Date</th>
+
+      </tr>
+    <tr *ngFor="let item of leaving">
+        <td>{{item.name}}</td>
+        <td>{{item.mother}}</td>
+        <td>{{item.enrollment}}</td>
+        <td>{{item.school}}</td>
+        <td>{{item.state}}</td>
+        <td>{{item.nationality}}</td>
+        <td>{{item.caste}}</td>
+        <td>{{item.birth_place}}</td>
+        <td>{{item.birth_date}}</td>
+        <td>{{item.ad_date}}</td>
+        <td>{{item.leaving_date}}</td>
+        <td>{{item.reason}}</td>
+        <td>{{item.mail}}</td>
+        <td>{{item.l_date}}</td>
+     </tr>
+   </table>
+   <br><br>
+   <button type="submit" class="btn login_btn" style="margin-left: 620px; width: fit-content;" (click)="downloadFile_leaving()">Download Report of Leaving Certificate</button>
+  
+   <br><br>
+   <h3 style="text-align: center;font-family:cursive;">Quiz Certificate</h3>
+   <br>
+   <table>
+    <tr>
+        <th>Name</th>
+        <th>Organization</th>
+        <th>Date of Quiz</th>
+        <th>Name of Quiz</th>
+        <th>Venue of Quiz</th>
+        <th>Position</th>
+        <th>Email ID</th>
+        <th>Issue Date</th>
+
+      </tr>
+    <tr *ngFor="let item of quiz">
+        <td>{{item.name}}</td>
+        <td>{{item.organization}}</td>
+        <td>{{item.issue_date}}</td>
+        <td>{{item.name_quiz}}</td>
+        <td>{{item.venue}}</td>
+        <td>{{item.certificate_for}}</td>
+        <td>{{item.mail}}</td>
+        <td>{{item.q_date}}</td>
+     </tr>
+   </table>
+   <br><br>
+   <button type="submit" class="btn login_btn" style="margin-left: 640px; width: fit-content;" (click)="downloadFile_quiz()">Download Report of Quiz Certificate</button>
+   
+   <br><br>
+   <h3 style="text-align: center;font-family:cursive;">Student Achievement Certificate</h3>
+   <br>
+   <table>
+    <tr>
+        <th>Name</th>
+        <th>Organization</th>
+        <th>Program</th>
+        <th>Venue</th>
+        <th>Date of Program</th>
+        <th>Email ID</th>
+        <th>Issue Date</th>
+
+      </tr>
+    <tr *ngFor="let item of student">
+        <td>{{item.name}}</td>
+        <td>{{item.organization}}</td>
+        <td>{{item.program}}</td>
+        <td>{{item.venue}}</td>
+        <td>{{item.issue_date}}</td>
+        <td>{{item.mail}}</td>
+        <td>{{item.s_date}}</td>
+     </tr>
+   </table>
+   <br><br>
+   <button type="submit" class="btn login_btn" style="margin-left: 580px; width: fit-content;" (click)="downloadFile()">Download Report of Student Achievement Certificate</button>
+</div>
+ 
+
+ 

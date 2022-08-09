@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        &nbsp;&nbsp;&nbsp;
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a  (click)="contactus()">Contact Us</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+            <a (click)="aboutus()">About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="report()">Report Generation</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="adduser()">Add User</a>
+          </li>
+      </ul>
+      <div style="margin-right: 10px;">{{adminname}}
+        <span  style="background-color: transparent;border:none; " ><i class="fas fa-user" ></i></span></div>
+        
+        <form>
+            <button style="margin-right: 20px; height: 40px; width:80px;padding: 5px;"class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+        </form>
+
+      
+      
+    </div>
+  </nav>
+
+<section>
+    <div class = "image">
+       <img src="../assets/certificate.webp" >
+       
+    </div>
+  
+    <div class = "content">
+        <h2>About Us</h2>
+        <span><!-- line here --></span>
+        <p>We at Certify, work towards generating Marriage Certificates, Leaving Certificate, Quiz Certificate and Student Achievement Certificate. </p>
+        
+        <ul class = "icons">
+            <li>
+                <i class = "fa fa-twitter"></i>
+            </li>
+            <li>
+                <i class = "fa fa-facebook"></i>
+            </li>
+            <li>
+                <i class = "fa fa-github"></i>
+            </li>
+            <li>
+                <i class = "fa fa-pinterest"></i>
+            </li>
+        </ul>
+    </div>
+  </section>
+  

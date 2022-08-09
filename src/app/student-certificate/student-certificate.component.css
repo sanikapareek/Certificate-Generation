@@ -1,0 +1,18 @@
+.img2{
+    background-image: url("/assets/student_certificate.png");
+    background-repeat: no-repeat;
+    margin-left: 350px;
+    margin-top: 80px;
+}
+.nav-item{
+    color: black;
+}
+.login_btn {
+    width: 30%;
+    background: rgba(119, 119, 250, 0.904) ;
+    color: white !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}

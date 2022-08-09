@@ -1,0 +1,46 @@
+body   {
+    font-family: 'Roboto';
+    
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: 100% 100%; 
+
+  }
+div.img2 
+{
+    /* display: block; */
+    background-image: url("/assets/marriage1.jpg");
+    text-align: center;
+    font-size: medium;
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    margin-top: 80px;
+    margin-left: 350px;
+}
+  p
+{
+    font-family: 'Roboto';
+}
+h3
+{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color:darkorange;
+margin-top:8%;
+
+}
+u
+{
+color: red;
+}
+.nav-item{
+  color: black;
+}
+.login_btn {
+  width: 30%;
+  background: rgba(119, 119, 250, 0.904) ;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}

@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a  (click)="contactus()">Contact Us</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+            <a (click)="aboutus()">About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="report()">Report Generation</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="adduser()">Add User</a>
+          </li>
+      </ul>
+      <div style="margin-right: 10px;">{{adminname}}
+        <span  style="background-color: transparent;border:none; " ><i class="fas fa-user" ></i></span></div>
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+        </form>
+
+      
+      
+    </div>
+  </nav>
+  <div>
+    <div class="img2" style="height: 500px; width: 800px;border: 1px solid rgb(119, 118, 118); padding: 30px;" id="pdfTable" #pdfTable>
+      <h3 style="text-align: center; margin-top: 80px;">Student Achievement Certificate </h3>
+      <br>
+      <p style="text-align: center;">This is to certify that</p>
+      <br><br>
+      <h2 style="text-align: center;font-family: cursive;">{{item[0].name}}</h2>
+      <br>
+      <p style="text-align: center;">
+          student of {{item[0].organization}} is recongized for his/her <br>achievement in {{item[0].program}} <br> conducted on {{item[0].issue_date}} at {{item[0].venue}}</p>
+  
+  </div>
+  <br><br>
+  </div>
+
+
+<div class="modal-footer d-flex justify-content-center">
+  <br>
+  <br>
+  <button type="button" name="button" class="btn login_btn" (click)="generateImage()" >Download Certificate</button>
+  <button type="button" name="button" class="btn login_btn">Send Certificate on Mail</button>
+</div>

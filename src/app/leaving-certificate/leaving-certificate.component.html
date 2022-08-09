@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a  (click)="contactus()">Contact Us</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+            <a (click)="aboutus()">About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="report()">Report Generation</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="adduser()">Add User</a>
+          </li>
+      </ul>
+      <div style="margin-right: 10px;">{{adminname}}
+        <span  style="background-color: transparent;border:none; " ><i class="fas fa-user" ></i></span></div>
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+        </form>
+
+      
+      
+    </div>
+  </nav>
+
+  <section id="block">
+  <div class="img1" id="pdfTable" #pdfTable>
+    <div class="div" style="height: 850px; width: 600px;border: 10px solid #550000;border-radius: 5px;" >
+        <h2 style="text-align: center; font-family: cursive; margin-top: 15px;">Leaving Certificate </h2>
+        <br>
+        <h4 style="font-family:cursive;">{{item[0].school}}</h4>
+        <br><br>
+            <div >
+                    <table>
+                        <tr>
+                            <td>Name Of the Student</td>
+                            <td>{{item[0].name}}
+
+                              &nbsp;&nbsp;
+                              <img src="{{image_name}}" style="height:50px;width: 50px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mother's Name</td>
+                            <td>{{item[0].mother}}</td>
+                        </tr>
+                        <tr>
+                          <td>Enrollment Number </td>
+                          <td>{{item[0].enrollment}}</td>
+                          <hr>
+                      </tr>
+                        <tr>
+                            <td>State</td>
+                            <td>{{item[0].state}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nationality</td>
+                            <td>{{item[0].nationality}}</td>
+                        </tr>
+                        <tr>
+                            <td>Caste</td>
+                            <td>{{item[0].caste}}</td>
+                        </tr>
+                        <tr>
+                          <td>Date of Birth</td>
+                          <td>{{item[0].birth_date}}</td>
+                      </tr>
+                        <tr>
+                            <td>Place Of Birth</td>
+                            <td>{{item[0].birth_place}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Admission</td>
+                            <td>{{item[0].ad_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date of Leaving</td>
+                            <td>{{item[0].leaving_date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Reason of Leaving</td>
+                            <td>{{item[0].reason}}</td>
+                        </tr>
+                    </table>
+                </div>
+               
+    </div>
+    </div>
+    <br><br>
+    </section>
+
+    <div class="modal-footer d-flex justify-content-center">
+      <button type="button" name="button" class="btn login_btn" (click)="generateImage()" >Download Certificate</button>
+      <button type="button" name="button" class="btn login_btn">Send Certificate on Mail</button>
+    </div>

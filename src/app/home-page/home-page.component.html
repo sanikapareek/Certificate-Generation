@@ -1,0 +1,1464 @@
+<style>
+    .required:after {
+        content: " *";
+        color: red;
+    }
+    
+    .ss-main .ss-single- {
+        height: 40px;
+    }
+    
+    span.placeholder {
+        background-color: #fff;
+        color: #000000;
+        opacity: 1;
+        cursor: pointer;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+          <a  (click)="contactus()">Contact Us</a>
+        </li>&nbsp;&nbsp;&nbsp;
+        <li class="nav-item">
+            <a (click)="aboutus()">About Us</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="report()">Report Generation</a>
+          </li>&nbsp;&nbsp;&nbsp;
+          <li *ngIf="show" class="nav-item">
+            <a  (click)="adduser()">Add User</a>
+          </li>
+      </ul>
+      <div style="margin-right: 10px;">{{adminname}}
+        <span  style="background-color: transparent;border:none; " ><i class="fas fa-user" ></i></span></div>
+        
+        <form>
+            <button class="btn btn-outline-success" type="submit" (click)="logout()">Logout</button>
+        </form>
+
+      
+      
+    </div>
+  </nav>
+ <h1 style="text-align: center;margin-top: 10px;font-family:cursive;">Certify: Certificate Generation Portal</h1>
+<div  style="padding-top: 10px;margin-left: 300px;">
+    <div class="row row-cols-2 row-cols-sm-2">
+      <div class="col" style="width: 460px;">
+        <div class="p-3 border bg-light">
+            <div class="card" >
+                <img src="../assets/marriage.JPG"   style="height:170px ;" class="card-img-top"/>
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#MarriageCertificateModal" [disabled]="marriage">
+                        <b>Marriage Certificate</b>
+                    </button>
+                </div>
+                </div>
+            </div>        
+        </div>
+      </div>
+     <div class="col" style="width: 460px;" >
+        <div class="p-3 border bg-light">
+            <div class="card">
+                <img
+                  src="../assets/Leaving Certificate.png" style="height:170px;" class="card-img-top"/>
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                   <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LeavingCertificateModal" [disabled]="leaving">
+                    Leaving Certificate
+                  </button>
+                </div>
+                </div>
+              </div>      
+              </div>
+      </div>
+   
+</div>
+  
+<div  style="padding-top: 20px;">
+    <div class="row row-cols-2 row-cols-sm-2">
+      <div class="col" style="width: 460px;" >
+        <div class="p-3 border bg-light">
+            <div class="card">
+                <img
+                  src="../assets/quiz.jpeg" style="height: 170px;"
+                  class="card-img-top"
+                />
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#QuizzCertificateModal" [disabled]="quiz">
+                        <b>Quiz Certificate</b>
+                    </button>
+                </div>
+                </div>
+              </div>        
+        </div>
+      </div>
+        <div class="col" style="width: 460px;" >
+        <div class="p-3 border bg-light">
+            <div class="card">
+                <img src="../assets/student.jpeg" style="height:170px;" class="card-img-top" />
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                   <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#StudentAchievementsCertificateModal" [disabled]="student">
+                    Student Achievements Certificate
+                  </button>
+                </div>
+                </div>
+              </div>      
+              </div>
+      </div>
+              
+        </div>
+      
+              
+        </div>
+</div>
+
+
+<div class="modal fade"  data-bs-backdrop="static" id="MarriageCertificateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h3 style="text-align: center; margin-top: 10px;">Marriage Certificate</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+        
+<!-- ---------------------------- Husband DETAILS Section Begins ----------------------------------------------------- -->
+        
+                
+      
+      <div class="row my-3 mx-3 rounded-lg bg-white">
+        <div class="col-12 py-4 px-3">
+            <div class="row justify-content-around">
+                <div class="modal-header3">
+                    <h4 class="modal-title w-50 font-weight-bold">Husband Details</h4>
+                    <br>
+                  </div>
+                <!-- <h4 class="modal-title w-50 font-weight-bold">Husband Details</h4> -->
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="HusbandFullName"><span
+                        class="required" >Full Name Of the Husband</span></label>
+                    <input type="text" id="HusbandFullName" class="form-control" [(ngModel)]="h_name" name="h_name"/>
+                </div>
+        
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HusbandReligion"><span
+                        class="required">Religion of Husband</span></label>
+                        <select required="" id="HubandReligion" class="form-control" [(ngModel)]="h_religion" name="h_religion">
+                            <option value="" selected="selected" disabled="disabled">-- select Religion of Husband --</option>
+                            <option value="African Traditional &amp; Diasporic">African Traditional &amp; Diasporic</option>
+                            <option value="Agnostic">Agnostic</option>
+                            <option value="Atheist">Atheist</option>
+                            <option value="Baha'i">Baha'i</option>
+                            <option value="Buddhism">Buddhism</option>
+                            <option value="Cao Dai">Cao Dai</option>
+                            <option value="Chinese traditional religion">Chinese traditional religion</option>
+                            <option value="Christianity">Christianity</option>
+                            <option value="Hinduism">Hinduism</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Jainism">Jainism</option>
+                            <option value="Juche">Juche</option>
+                            <option value="Judaism">Judaism</option>
+                            <option value="Neo-Paganism">Neo-Paganism</option>
+                            <option value="Nonreligious">Nonreligious</option>
+                            <option value="Rastafarianism">Rastafarianism</option>
+                            <option value="Secular">Secular</option>
+                            <option value="Shinto">Shinto</option>
+                            <option value="Sikhism">Sikhism</option>
+                            <option value="Spiritism">Spiritism</option>
+                            <option value="Tenrikyo">Tenrikyo</option>
+                            <option value="Unitarian-Universalism">Unitarian-Universalism</option>
+                            <option value="Zoroastrianism">Zoroastrianism</option>
+                            <option value="primal-indigenous">primal-indigenous</option>
+                            <option value="Other">Other</option>
+                        </select>                
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HusbandStatusBeforeMarriage"><span
+                        class="required">Husband Status Before Marriage</span></label>
+                        <select required="" id="HusbandStatusBeforeMarriage" class="form-control" [(ngModel)]="h_status" name="h_status">
+                            <option value="" selected="selected" disabled="disabled">-- select --</option>
+                            <option disabled="" selected="">Select</option>
+                            <option value="Spinster">Spinster</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorsee">Divorsee</option>
+                            <option value="Widow">Widow</option>
+                        </select>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HubandDateOfBirth">Husband's Date Of Birth</label>
+                    <input type="date"id="HubandDateOfBirth"class="form-control" [(ngModel)]="h_birth" name="h_birth"/>
+                </div>
+                
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HusbandHomeStreetName">Street Name</label>
+                    <input type="text" id="HusbandHomeStreetName" class="form-control" [(ngModel)]="h_street" name="h_street" />
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HusbandHomeState">State</label>
+                    <select id="HusbandHomeState"  name="HusbandHomeState" class="form-control"  [(ngModel)]="h_state" name="h_state">
+                        <option value="none">Choose</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Puducherry">Puducherry</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                                           
+                    </select>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="HusbandHomeCity">City</label>
+                    <select id="HusbandHomeCity" class="form-control"  [(ngModel)]="h_city" name="h_city">
+                        <option value="">Select City</option>
+                        <option value="Achalpur">Achalpur</option>
+                        <option value="Ahiri">Ahiri</option>
+                        <option value="Ahmadnagar">Ahmadnagar</option>
+                        <option value="Ahmadpur">Ahmadpur</option>
+                        <option value="Airoli">Airoli</option>
+                        <option value="Ajra">Ajra</option>
+                        <option value="Akalkot">Akalkot</option>
+                        <option value="Akola">Akola</option>
+                        <option value="Akot">Akot</option>
+                        <option value="Alandi">Alandi</option>
+                        <option value="Alibag">Alibag</option>
+                        <option value="Allapalli">Allapalli</option>
+                        <option value="Amalner">Amalner</option>
+                        <option value="Amarnath">Amarnath</option>
+                        <option value="Ambad">Ambad</option>
+                        <option value="Ambajogai">Ambajogai</option>
+                        <option value="Amravati">Amravati</option>
+                        <option value="Amravati Division">Amravati Division</option>
+                        <option value="Anjangaon">Anjangaon</option>
+                        <option value="Anshing">Anshing</option>
+                        <option value="Arangaon">Arangaon</option>
+                        <option value="Artist Village">Artist Village</option>
+                        <option value="Arvi">Arvi</option>
+                        <option value="Ashta">Ashta</option>
+                        <option value="Ashti">Ashti</option>
+                        <option value="Aurangabad">Aurangabad</option>
+                        <option value="Ausa">Ausa</option>
+                        <option value="Badlapur">Badlapur</option>
+                        <option value="Balapur">Balapur</option>
+                        <option value="Ballalpur">Ballalpur</option>
+                        <option value="Baramati">Baramati</option>
+                        <option value="Barsi">Barsi</option>
+                        <option value="Basmat">Basmat</option>
+                        <option value="Beed">Beed</option>
+                        <option value="Bhandara">Bhandara</option>
+                        <option value="Bhayandar">Bhayandar</option>
+                        <option value="Bhigvan">Bhigvan</option>
+                        <option value="Bhiwandi">Bhiwandi</option>
+                        <option value="Bhor">Bhor</option>
+                        <option value="Bhudgaon">Bhudgaon</option>
+                        <option value="Bhum">Bhum</option>
+                        <option value="Bhusaval">Bhusaval</option>
+                        <option value="Bid">Bid</option>
+                        <option value="Biloli">Biloli</option>
+                        <option value="Boisar">Boisar</option>
+                        <option value="Borivli">Borivli</option>
+                        <option value="Buldana">Buldana</option>
+                        <option value="Chakan">Chakan</option>
+                        <option value="Chalisgaon">Chalisgaon</option>
+                        <option value="Chanda">Chanda</option>
+                        <option value="Chandor">Chandor</option>
+                        <option value="Chandrapur">Chandrapur</option>
+                        <option value="Chandur">Chandur</option>
+                        <option value="Chandur Bazar">Chandur Bazar</option>
+                        <option value="Chicholi">Chicholi</option>
+                        <option value="Chikhli">Chikhli</option>
+                        <option value="Chinchani">Chinchani</option>
+                        <option value="Chiplun">Chiplun</option>
+                        <option value="Chopda">Chopda</option>
+                        <option value="Dabhol">Dabhol</option>
+                        <option value="Dahanu">Dahanu</option>
+                        <option value="Darwha">Darwha</option>
+                        <option value="Daryapur">Daryapur</option>
+                        <option value="Dattapur">Dattapur</option>
+                        <option value="Daulatabad">Daulatabad</option>
+                        <option value="Daund">Daund</option>
+                        <option value="Dehu">Dehu</option>
+                        <option value="Deolali">Deolali</option>
+                        <option value="Deoli">Deoli</option>
+                        <option value="Deulgaon Raja">Deulgaon Raja</option>
+                        <option value="Dharangaon">Dharangaon</option>
+                        <option value="Dharmabad">Dharmabad</option>
+                        <option value="Dharur">Dharur</option>
+                        <option value="Dhule">Dhule</option>
+                        <option value="Dhulia">Dhulia</option>
+                        <option value="Diglur">Diglur</option>
+                        <option value="Digras">Digras</option>
+                        <option value="Dombivli">Dombivli</option>
+                        <option value="Dondaicha">Dondaicha</option>
+                        <option value="Dudhani">Dudhani</option>
+                        <option value="Durgapur">Durgapur</option>
+                        <option value="Erandol">Erandol</option>
+                        <option value="Faizpur">Faizpur</option>
+                        <option value="Gadchiroli">Gadchiroli</option>
+                        <option value="Gadhinglaj">Gadhinglaj</option>
+                        <option value="Gangakher">Gangakher</option>
+                        <option value="Gangapur">Gangapur</option>
+                        <option value="Gevrai">Gevrai</option>
+                        <option value="Ghatanji">Ghatanji</option>
+                        <option value="Ghoti Budrukh">Ghoti Budrukh</option>
+                        <option value="Ghugus">Ghugus</option>
+                        <option value="Gondiya">Gondiya</option>
+                        <option value="Goregaon">Goregaon</option>
+                        <option value="Guhagar">Guhagar</option>
+                        <option value="Hadgaon">Hadgaon</option>
+                        <option value="Harnai">Harnai</option>
+                        <option value="Hinganghat">Hinganghat</option>
+                        <option value="Hingoli">Hingoli</option>
+                        <option value="Hirapur Hamesha">Hirapur Hamesha</option>
+                        <option value="Ichalkaranji">Ichalkaranji</option>
+                        <option value="Igatpuri">Igatpuri</option>
+                        <option value="Indapur">Indapur</option>
+                        <option value="Jaisingpur">Jaisingpur</option>
+                        <option value="Jalgaon">Jalgaon</option>
+                        <option value="Jalgaon Jamod">Jalgaon Jamod</option>
+                        <option value="Jalna">Jalna</option>
+                        <option value="Jawhar">Jawhar</option>
+                        <option value="Jejuri">Jejuri</option>
+                        <option value="Jintur">Jintur</option>
+                        <option value="Junnar">Junnar</option>
+                        <option value="Kagal">Kagal</option>
+                        <option value="Kalamb">Kalamb</option>
+                        <option value="Kalamnuri">Kalamnuri</option>
+                        <option value="Kalas">Kalas</option>
+                        <option value="Kalmeshwar">Kalmeshwar</option>
+                        <option value="Kalundri">Kalundri</option>
+                        <option value="Kalyan">Kalyan</option>
+                        <option value="Kamthi">Kamthi</option>
+                        <option value="Kandri">Kandri</option>
+                        <option value="Kankauli">Kankauli</option>
+                        <option value="Kannad">Kannad</option>
+                        <option value="Karad">Karad</option>
+                        <option value="Karanja">Karanja</option>
+                        <option value="Karjat">Karjat</option>
+                        <option value="Karmala">Karmala</option>
+                        <option value="Kati">Kati</option>
+                        <option value="Katol">Katol</option>
+                        <option value="Khadki">Khadki</option>
+                        <option value="Khamgaon">Khamgaon</option>
+                        <option value="Khapa">Khapa</option>
+                        <option value="Kharakvasla">Kharakvasla</option>
+                        <option value="Khed">Khed</option>
+                        <option value="Khetia">Khetia</option>
+                        <option value="Khopoli">Khopoli</option>
+                        <option value="Khuldabad">Khuldabad</option>
+                        <option value="Kinwat">Kinwat</option>
+                        <option value="Kodoli">Kodoli</option>
+                        <option value="Kolhapur">Kolhapur</option>
+                        <option value="Kondalwadi">Kondalwadi</option>
+                        <option value="Kopargaon">Kopargaon</option>
+                        <option value="Koradi">Koradi</option>
+                        <option value="Koregaon">Koregaon</option>
+                        <option value="Koynanagar">Koynanagar</option>
+                        <option value="Kudal">Kudal</option>
+                        <option value="Kurandvad">Kurandvad</option>
+                        <option value="Kurduvadi">Kurduvadi</option>
+                        <option value="Lanja">Lanja</option>
+                        <option value="Lasalgaon">Lasalgaon</option>
+                        <option value="Latur">Latur</option>
+                        <option value="Lohogaon">Lohogaon</option>
+                        <option value="Lonar">Lonar</option>
+                        <option value="Lonavla">Lonavla</option>
+                        <option value="Mahabaleshwar">Mahabaleshwar</option>
+                        <option value="Mahad">Mahad</option>
+                        <option value="Maindargi">Maindargi</option>
+                        <option value="Majalgaon">Majalgaon</option>
+                        <option value="Makhjan">Makhjan</option>
+                        <option value="Malegaon">Malegaon</option>
+                        <option value="Malkapur">Malkapur</option>
+                        <option value="Malvan">Malvan</option>
+                        <option value="Manchar">Manchar</option>
+                        <option value="Mangrul Pir">Mangrul Pir</option>
+                        <option value="Manmad">Manmad</option>
+                        <option value="Manor">Manor</option>
+                        <option value="Mansar">Mansar</option>
+                        <option value="Manwat">Manwat</option>
+                        <option value="Matheran">Matheran</option>
+                        <option value="Mehekar">Mehekar</option>
+                        <option value="Mhasla">Mhasla</option>
+                        <option value="Mhasvad">Mhasvad</option>
+                        <option value="Mohpa">Mohpa</option>
+                        <option value="Moram">Moram</option>
+                        <option value="Morsi">Morsi</option>
+                        <option value="Mowad">Mowad</option>
+                        <option value="Mudkhed">Mudkhed</option>
+                        <option value="Mukher">Mukher</option>
+                        <option value="Mul">Mul</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Mumbai Suburban">Mumbai Suburban</option>
+                        <option value="Murbad">Murbad</option>
+                        <option value="Murgud">Murgud</option>
+                        <option value="Murtajapur">Murtajapur</option>
+                        <option value="Murud">Murud</option>
+                        <option value="Nagothana">Nagothana</option>
+                        <option value="Nagpur">Nagpur</option>
+                        <option value="Nagpur Division">Nagpur Division</option>
+                        <option value="Naldurg">Naldurg</option>
+                        <option value="Nanded">Nanded</option>
+                        <option value="Nandgaon">Nandgaon</option>
+                        <option value="Nandura Buzurg">Nandura Buzurg</option>
+                        <option value="Nandurbar">Nandurbar</option>
+                        <option value="Nashik">Nashik</option>
+                        <option value="Nashik Division">Nashik Division</option>
+                        <option value="Navi Mumbai">Navi Mumbai</option>
+                        <option value="Neral">Neral</option>
+                        <option value="Nilanga">Nilanga</option>
+                        <option value="Nipani">Nipani</option>
+                        <option value="Osmanabad">Osmanabad</option>
+                        <option value="Ozar">Ozar</option>
+                        <option value="Pachora">Pachora</option>
+                        <option value="Paithan">Paithan</option>
+                        <option value="Palghar">Palghar</option>
+                        <option value="Panchgani">Panchgani</option>
+                        <option value="Pandharpur">Pandharpur</option>
+                        <option value="Panhala">Panhala</option>
+                        <option value="Panvel">Panvel</option>
+                        <option value="Parbhani">Parbhani</option>
+                        <option value="Parli Vaijnath">Parli Vaijnath</option>
+                        <option value="Parola">Parola</option>
+                        <option value="Partur">Partur</option>
+                        <option value="Patan">Patan</option>
+                        <option value="Pathardi">Pathardi</option>
+                        <option value="Pathri">Pathri</option>
+                        <option value="Patur">Patur</option>
+                        <option value="Pawni">Pawni</option>
+                        <option value="Pen">Pen</option>
+                        <option value="Phaltan">Phaltan</option>
+                        <option value="Pimpri">Pimpri</option>
+                        <option value="Pipri">Pipri</option>
+                        <option value="Powai">Powai</option>
+                        <option value="Pulgaon">Pulgaon</option>
+                        <option value="Pune">Pune</option>
+                        <option value="Pune Division">Pune Division</option>
+                        <option value="Purna">Purna</option>
+                        <option value="Pusad">Pusad</option>
+                        <option value="Rahimatpur">Rahimatpur</option>
+                        <option value="Rahuri">Rahuri</option>
+                        <option value="Raigarh">Raigarh</option>
+                        <option value="Rajapur">Rajapur</option>
+                        <option value="Rajgurunagar">Rajgurunagar</option>
+                        <option value="Rajur">Rajur</option>
+                        <option value="Rajura">Rajura</option>
+                        <option value="Ramtek">Ramtek</option>
+                        <option value="Ratnagiri">Ratnagiri</option>
+                        <option value="Raver">Raver</option>
+                        <option value="Revadanda">Revadanda</option>
+                        <option value="Risod">Risod</option>
+                        <option value="Roha">Roha</option>
+                        <option value="Sangamner">Sangamner</option>
+                        <option value="Sangli">Sangli</option>
+                        <option value="Sangola">Sangola</option>
+                        <option value="Saoner">Saoner</option>
+                        <option value="Sasvad">Sasvad</option>
+                        <option value="Satana">Satana</option>
+                        <option value="Satara">Satara</option>
+                        <option value="Satara Division">Satara Division</option>
+                        <option value="Savantvadi">Savantvadi</option>
+                        <option value="Savda">Savda</option>
+                        <option value="Selu">Selu</option>
+                        <option value="Shahada">Shahada</option>
+                        <option value="Shahapur">Shahapur</option>
+                        <option value="Shegaon">Shegaon</option>
+                        <option value="Shiraguppi">Shiraguppi</option>
+                        <option value="Shirdi">Shirdi</option>
+                        <option value="Shirgaon">Shirgaon</option>
+                        <option value="Shirpur">Shirpur</option>
+                        <option value="Shirwal">Shirwal</option>
+                        <option value="Shivaji Nagar">Shivaji Nagar</option>
+                        <option value="Shrigonda">Shrigonda</option>
+                        <option value="Sillod">Sillod</option>
+                        <option value="Sindhudurg">Sindhudurg</option>
+                        <option value="Sindi">Sindi</option>
+                        <option value="Sinnar">Sinnar</option>
+                        <option value="Sirur">Sirur</option>
+                        <option value="Solapur">Solapur</option>
+                        <option value="Sonegaon">Sonegaon</option>
+                        <option value="Soygaon">Soygaon</option>
+                        <option value="Srivardhan">Srivardhan</option>
+                        <option value="Surgana">Surgana</option>
+                        <option value="Talegaon Dabhade">Talegaon Dabhade</option>
+                        <option value="Taloda">Taloda</option>
+                        <option value="Tarapur">Tarapur</option>
+                        <option value="Tasgaon">Tasgaon</option>
+                        <option value="Telhara">Telhara</option>
+                        <option value="Thane">Thane</option>
+                        <option value="Trimbak">Trimbak</option>
+                        <option value="Tuljapur">Tuljapur</option>
+                        <option value="Tumsar">Tumsar</option>
+                        <option value="Udgir">Udgir</option>
+                        <option value="Ulhasnagar">Ulhasnagar</option>
+                        <option value="Umarga">Umarga</option>
+                        <option value="Umarkhed">Umarkhed</option>
+                        <option value="Umred">Umred</option>
+                        <option value="Uran">Uran</option>
+                        <option value="Vada">Vada</option>
+                        <option value="Vaijapur">Vaijapur</option>
+                        <option value="Varangaon">Varangaon</option>
+                        <option value="Vasind">Vasind</option>
+                        <option value="Vengurla">Vengurla</option>
+                        <option value="Virar">Virar</option>
+                        <option value="Vite">Vite</option>
+                        <option value="Wadgaon">Wadgaon</option>
+                        <option value="Wai">Wai</option>
+                        <option value="Wani">Wani</option>
+                        <option value="Wardha">Wardha</option>
+                        <option value="Warora">Warora</option>
+                        <option value="Warud">Warud</option>
+                        <option value="Washim">Washim</option>
+                        <option value="Yaval">Yaval</option>
+                        <option value="Yavatmal">Yavatmal</option>
+                        <option value="Yeola">Yeola</option>
+                        
+                    </select>
+                </div>
+                <div style="float: left;">
+                    <label class="form-label" for="HusbandHomeZip">Zip/Postal Code</label>
+                    <input type="text" id="HusbandHomeZip" class="form-control"  style="width: 49%;" [(ngModel)]="h_zip" name="h_zip"/>
+                </div>
+<!-- ---------------------------- Wife DETAILS Section Begins ----------------------------------------------------- -->
+
+                <div class="modal-header2">
+                    <h4 class="modal-title w-50 font-weight-bold">Wife Details</h4>
+                  </div>
+                  <div class="row my-3 mx-3 rounded-lg bg-white">
+                    <div class="col-12 py-4 px-3">
+                        <div class="row justify-content-around">
+                            <div class="col-sm-12 col-md-12 mb-3">
+                                <label class="form-label" for="WifeFullName"><span
+                                    class="required">Full Name Of the Wife</span></label>
+                                <input type="text" id="WifeFullName" class="form-control"   [(ngModel)]="w_name" name="w_name"/>
+                            </div>
+                                
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="WifeReligion"><span
+                                    class="required">Religion of Wife</span></label>
+                                    <select required="" id="HubandReligion" class="form-control" [(ngModel)]="w_religion" name="w_religion">
+                                        <option value="" selected="selected" disabled="disabled">-- select Religion of Wife --</option>
+                                        <option value="African Traditional &amp; Diasporic">African Traditional &amp; Diasporic</option>
+                                        <option value="Agnostic">Agnostic</option>
+                                        <option value="Atheist">Atheist</option>
+                                        <option value="Baha'i">Baha'i</option>
+                                        <option value="Buddhism">Buddhism</option>
+                                        <option value="Cao Dai">Cao Dai</option>
+                                        <option value="Chinese traditional religion">Chinese traditional religion</option>
+                                        <option value="Christianity">Christianity</option>
+                                        <option value="Hinduism">Hinduism</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Jainism">Jainism</option>
+                                        <option value="Juche">Juche</option>
+                                        <option value="Judaism">Judaism</option>
+                                        <option value="Neo-Paganism">Neo-Paganism</option>
+                                        <option value="Nonreligious">Nonreligious</option>
+                                        <option value="Rastafarianism">Rastafarianism</option>
+                                        <option value="Secular">Secular</option>
+                                        <option value="Shinto">Shinto</option>
+                                        <option value="Sikhism">Sikhism</option>
+                                        <option value="Spiritism">Spiritism</option>
+                                        <option value="Tenrikyo">Tenrikyo</option>
+                                        <option value="Unitarian-Universalism">Unitarian-Universalism</option>
+                                        <option value="Zoroastrianism">Zoroastrianism</option>
+                                        <option value="primal-indigenous">primal-indigenous</option>
+                                        <option value="Other">Other</option>
+                                    </select>                
+                            </div>
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="WifeStatusBeforeMarriage"><span
+                                    class="required">Wife Status Before Marriage</span></label>
+                                    <select required="" id="WifeStatusBeforeMarriage" class="form-control" [(ngModel)]="w_status" name="w_status">
+                                        <option value="" selected="selected" disabled="disabled">-- select --</option>
+                                        <option disabled="" selected="">Select</option>
+                                        <option value="Spinster">Spinster</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Divorsee">Divorsee</option>
+                                        <option value="Widow">Widow</option>
+                                    </select>
+                            </div>
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="HubandDateOfBirth">Wife's Date Of Birth</label>
+                                <input type="date"id="HubandDateOfBirth"class="form-control" [(ngModel)]="w_birth" name="w_birth"/>
+                            </div>
+                                
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="WifeHomeStreetName">Street Name</label>
+                                <input type="text" id="WifeHomeStreetName" class="form-control" [(ngModel)]="w_street" name="w_street" />
+                            </div>
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="WifeHomeState">State</label>
+                                <select id="WifeHomeState"  name="WifeHomeState" class="form-control" [(ngModel)]="w_state" name="w_state">
+                                    <option value="none">Choose</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                                       
+                                </select>
+                            </div>
+                                <div class="col-sm-12 col-md-6 mb-3">
+                                <label class="form-label" for="WifeHomeCity">City</label>
+                                <select id="WifeHomeCity" class="form-control" [(ngModel)]="w_city" name="w_city">
+                                    <option value="">Select City</option>
+                                    <option value="Achalpur">Achalpur</option>
+                                    <option value="Ahiri">Ahiri</option>
+                                    <option value="Ahmadnagar">Ahmadnagar</option>
+                                    <option value="Ahmadpur">Ahmadpur</option>
+                                    <option value="Airoli">Airoli</option>
+                                    <option value="Ajra">Ajra</option>
+                                    <option value="Akalkot">Akalkot</option>
+                                    <option value="Akola">Akola</option>
+                                    <option value="Akot">Akot</option>
+                                    <option value="Alandi">Alandi</option>
+                                    <option value="Alibag">Alibag</option>
+                                    <option value="Allapalli">Allapalli</option>
+                                    <option value="Amalner">Amalner</option>
+                                    <option value="Amarnath">Amarnath</option>
+                                    <option value="Ambad">Ambad</option>
+                                    <option value="Ambajogai">Ambajogai</option>
+                                    <option value="Amravati">Amravati</option>
+                                    <option value="Amravati Division">Amravati Division</option>
+                                    <option value="Anjangaon">Anjangaon</option>
+                                    <option value="Anshing">Anshing</option>
+                                    <option value="Arangaon">Arangaon</option>
+                                    <option value="Artist Village">Artist Village</option>
+                                    <option value="Arvi">Arvi</option>
+                                    <option value="Ashta">Ashta</option>
+                                    <option value="Ashti">Ashti</option>
+                                    <option value="Aurangabad">Aurangabad</option>
+                                    <option value="Ausa">Ausa</option>
+                                    <option value="Badlapur">Badlapur</option>
+                                    <option value="Balapur">Balapur</option>
+                                    <option value="Ballalpur">Ballalpur</option>
+                                    <option value="Baramati">Baramati</option>
+                                    <option value="Barsi">Barsi</option>
+                                    <option value="Basmat">Basmat</option>
+                                    <option value="Beed">Beed</option>
+                                    <option value="Bhandara">Bhandara</option>
+                                    <option value="Bhayandar">Bhayandar</option>
+                                    <option value="Bhigvan">Bhigvan</option>
+                                    <option value="Bhiwandi">Bhiwandi</option>
+                                    <option value="Bhor">Bhor</option>
+                                    <option value="Bhudgaon">Bhudgaon</option>
+                                    <option value="Bhum">Bhum</option>
+                                    <option value="Bhusaval">Bhusaval</option>
+                                    <option value="Bid">Bid</option>
+                                    <option value="Biloli">Biloli</option>
+                                    <option value="Boisar">Boisar</option>
+                                    <option value="Borivli">Borivli</option>
+                                    <option value="Buldana">Buldana</option>
+                                    <option value="Chakan">Chakan</option>
+                                    <option value="Chalisgaon">Chalisgaon</option>
+                                    <option value="Chanda">Chanda</option>
+                                    <option value="Chandor">Chandor</option>
+                                    <option value="Chandrapur">Chandrapur</option>
+                                    <option value="Chandur">Chandur</option>
+                                    <option value="Chandur Bazar">Chandur Bazar</option>
+                                    <option value="Chicholi">Chicholi</option>
+                                    <option value="Chikhli">Chikhli</option>
+                                    <option value="Chinchani">Chinchani</option>
+                                    <option value="Chiplun">Chiplun</option>
+                                    <option value="Chopda">Chopda</option>
+                                    <option value="Dabhol">Dabhol</option>
+                                    <option value="Dahanu">Dahanu</option>
+                                    <option value="Darwha">Darwha</option>
+                                    <option value="Daryapur">Daryapur</option>
+                                    <option value="Dattapur">Dattapur</option>
+                                    <option value="Daulatabad">Daulatabad</option>
+                                    <option value="Daund">Daund</option>
+                                    <option value="Dehu">Dehu</option>
+                                    <option value="Deolali">Deolali</option>
+                                    <option value="Deoli">Deoli</option>
+                                    <option value="Deulgaon Raja">Deulgaon Raja</option>
+                                    <option value="Dharangaon">Dharangaon</option>
+                                    <option value="Dharmabad">Dharmabad</option>
+                                    <option value="Dharur">Dharur</option>
+                                    <option value="Dhule">Dhule</option>
+                                    <option value="Dhulia">Dhulia</option>
+                                    <option value="Diglur">Diglur</option>
+                                    <option value="Digras">Digras</option>
+                                    <option value="Dombivli">Dombivli</option>
+                                    <option value="Dondaicha">Dondaicha</option>
+                                    <option value="Dudhani">Dudhani</option>
+                                    <option value="Durgapur">Durgapur</option>
+                                    <option value="Erandol">Erandol</option>
+                                    <option value="Faizpur">Faizpur</option>
+                                    <option value="Gadchiroli">Gadchiroli</option>
+                                    <option value="Gadhinglaj">Gadhinglaj</option>
+                                    <option value="Gangakher">Gangakher</option>
+                                    <option value="Gangapur">Gangapur</option>
+                                    <option value="Gevrai">Gevrai</option>
+                                    <option value="Ghatanji">Ghatanji</option>
+                                    <option value="Ghoti Budrukh">Ghoti Budrukh</option>
+                                    <option value="Ghugus">Ghugus</option>
+                                    <option value="Gondiya">Gondiya</option>
+                                    <option value="Goregaon">Goregaon</option>
+                                    <option value="Guhagar">Guhagar</option>
+                                    <option value="Hadgaon">Hadgaon</option>
+                                    <option value="Harnai">Harnai</option>
+                                    <option value="Hinganghat">Hinganghat</option>
+                                    <option value="Hingoli">Hingoli</option>
+                                    <option value="Hirapur Hamesha">Hirapur Hamesha</option>
+                                    <option value="Ichalkaranji">Ichalkaranji</option>
+                                    <option value="Igatpuri">Igatpuri</option>
+                                    <option value="Indapur">Indapur</option>
+                                    <option value="Jaisingpur">Jaisingpur</option>
+                                    <option value="Jalgaon">Jalgaon</option>
+                                    <option value="Jalgaon Jamod">Jalgaon Jamod</option>
+                                    <option value="Jalna">Jalna</option>
+                                    <option value="Jawhar">Jawhar</option>
+                                    <option value="Jejuri">Jejuri</option>
+                                    <option value="Jintur">Jintur</option>
+                                    <option value="Junnar">Junnar</option>
+                                    <option value="Kagal">Kagal</option>
+                                    <option value="Kalamb">Kalamb</option>
+                                    <option value="Kalamnuri">Kalamnuri</option>
+                                    <option value="Kalas">Kalas</option>
+                                    <option value="Kalmeshwar">Kalmeshwar</option>
+                                    <option value="Kalundri">Kalundri</option>
+                                    <option value="Kalyan">Kalyan</option>
+                                    <option value="Kamthi">Kamthi</option>
+                                    <option value="Kandri">Kandri</option>
+                                    <option value="Kankauli">Kankauli</option>
+                                    <option value="Kannad">Kannad</option>
+                                    <option value="Karad">Karad</option>
+                                    <option value="Karanja">Karanja</option>
+                                    <option value="Karjat">Karjat</option>
+                                    <option value="Karmala">Karmala</option>
+                                    <option value="Kati">Kati</option>
+                                    <option value="Katol">Katol</option>
+                                    <option value="Khadki">Khadki</option>
+                                    <option value="Khamgaon">Khamgaon</option>
+                                    <option value="Khapa">Khapa</option>
+                                    <option value="Kharakvasla">Kharakvasla</option>
+                                    <option value="Khed">Khed</option>
+                                    <option value="Khetia">Khetia</option>
+                                    <option value="Khopoli">Khopoli</option>
+                                    <option value="Khuldabad">Khuldabad</option>
+                                    <option value="Kinwat">Kinwat</option>
+                                    <option value="Kodoli">Kodoli</option>
+                                    <option value="Kolhapur">Kolhapur</option>
+                                    <option value="Kondalwadi">Kondalwadi</option>
+                                    <option value="Kopargaon">Kopargaon</option>
+                                    <option value="Koradi">Koradi</option>
+                                    <option value="Koregaon">Koregaon</option>
+                                    <option value="Koynanagar">Koynanagar</option>
+                                    <option value="Kudal">Kudal</option>
+                                    <option value="Kurandvad">Kurandvad</option>
+                                    <option value="Kurduvadi">Kurduvadi</option>
+                                    <option value="Lanja">Lanja</option>
+                                    <option value="Lasalgaon">Lasalgaon</option>
+                                    <option value="Latur">Latur</option>
+                                    <option value="Lohogaon">Lohogaon</option>
+                                    <option value="Lonar">Lonar</option>
+                                    <option value="Lonavla">Lonavla</option>
+                                    <option value="Mahabaleshwar">Mahabaleshwar</option>
+                                    <option value="Mahad">Mahad</option>
+                                    <option value="Maindargi">Maindargi</option>
+                                    <option value="Majalgaon">Majalgaon</option>
+                                    <option value="Makhjan">Makhjan</option>
+                                    <option value="Malegaon">Malegaon</option>
+                                    <option value="Malkapur">Malkapur</option>
+                                    <option value="Malvan">Malvan</option>
+                                    <option value="Manchar">Manchar</option>
+                                    <option value="Mangrul Pir">Mangrul Pir</option>
+                                    <option value="Manmad">Manmad</option>
+                                    <option value="Manor">Manor</option>
+                                    <option value="Mansar">Mansar</option>
+                                    <option value="Manwat">Manwat</option>
+                                    <option value="Matheran">Matheran</option>
+                                    <option value="Mehekar">Mehekar</option>
+                                    <option value="Mhasla">Mhasla</option>
+                                    <option value="Mhasvad">Mhasvad</option>
+                                    <option value="Mohpa">Mohpa</option>
+                                    <option value="Moram">Moram</option>
+                                    <option value="Morsi">Morsi</option>
+                                    <option value="Mowad">Mowad</option>
+                                    <option value="Mudkhed">Mudkhed</option>
+                                    <option value="Mukher">Mukher</option>
+                                    <option value="Mul">Mul</option>
+                                    <option value="Mumbai">Mumbai</option>
+                                    <option value="Mumbai Suburban">Mumbai Suburban</option>
+                                    <option value="Murbad">Murbad</option>
+                                    <option value="Murgud">Murgud</option>
+                                    <option value="Murtajapur">Murtajapur</option>
+                                    <option value="Murud">Murud</option>
+                                    <option value="Nagothana">Nagothana</option>
+                                    <option value="Nagpur">Nagpur</option>
+                                    <option value="Nagpur Division">Nagpur Division</option>
+                                    <option value="Naldurg">Naldurg</option>
+                                    <option value="Nanded">Nanded</option>
+                                    <option value="Nandgaon">Nandgaon</option>
+                                    <option value="Nandura Buzurg">Nandura Buzurg</option>
+                                    <option value="Nandurbar">Nandurbar</option>
+                                    <option value="Nashik">Nashik</option>
+                                    <option value="Nashik Division">Nashik Division</option>
+                                    <option value="Navi Mumbai">Navi Mumbai</option>
+                                    <option value="Neral">Neral</option>
+                                    <option value="Nilanga">Nilanga</option>
+                                    <option value="Nipani">Nipani</option>
+                                    <option value="Osmanabad">Osmanabad</option>
+                                    <option value="Ozar">Ozar</option>
+                                    <option value="Pachora">Pachora</option>
+                                    <option value="Paithan">Paithan</option>
+                                    <option value="Palghar">Palghar</option>
+                                    <option value="Panchgani">Panchgani</option>
+                                    <option value="Pandharpur">Pandharpur</option>
+                                    <option value="Panhala">Panhala</option>
+                                    <option value="Panvel">Panvel</option>
+                                    <option value="Parbhani">Parbhani</option>
+                                    <option value="Parli Vaijnath">Parli Vaijnath</option>
+                                    <option value="Parola">Parola</option>
+                                    <option value="Partur">Partur</option>
+                                    <option value="Patan">Patan</option>
+                                    <option value="Pathardi">Pathardi</option>
+                                    <option value="Pathri">Pathri</option>
+                                    <option value="Patur">Patur</option>
+                                    <option value="Pawni">Pawni</option>
+                                    <option value="Pen">Pen</option>
+                                    <option value="Phaltan">Phaltan</option>
+                                    <option value="Pimpri">Pimpri</option>
+                                    <option value="Pipri">Pipri</option>
+                                    <option value="Powai">Powai</option>
+                                    <option value="Pulgaon">Pulgaon</option>
+                                    <option value="Pune">Pune</option>
+                                    <option value="Pune Division">Pune Division</option>
+                                    <option value="Purna">Purna</option>
+                                    <option value="Pusad">Pusad</option>
+                                    <option value="Rahimatpur">Rahimatpur</option>
+                                    <option value="Rahuri">Rahuri</option>
+                                    <option value="Raigarh">Raigarh</option>
+                                    <option value="Rajapur">Rajapur</option>
+                                    <option value="Rajgurunagar">Rajgurunagar</option>
+                                    <option value="Rajur">Rajur</option>
+                                    <option value="Rajura">Rajura</option>
+                                    <option value="Ramtek">Ramtek</option>
+                                    <option value="Ratnagiri">Ratnagiri</option>
+                                    <option value="Raver">Raver</option>
+                                    <option value="Revadanda">Revadanda</option>
+                                    <option value="Risod">Risod</option>
+                                    <option value="Roha">Roha</option>
+                                    <option value="Sangamner">Sangamner</option>
+                                    <option value="Sangli">Sangli</option>
+                                    <option value="Sangola">Sangola</option>
+                                    <option value="Saoner">Saoner</option>
+                                    <option value="Sasvad">Sasvad</option>
+                                    <option value="Satana">Satana</option>
+                                    <option value="Satara">Satara</option>
+                                    <option value="Satara Division">Satara Division</option>
+                                    <option value="Savantvadi">Savantvadi</option>
+                                    <option value="Savda">Savda</option>
+                                    <option value="Selu">Selu</option>
+                                    <option value="Shahada">Shahada</option>
+                                    <option value="Shahapur">Shahapur</option>
+                                    <option value="Shegaon">Shegaon</option>
+                                    <option value="Shiraguppi">Shiraguppi</option>
+                                    <option value="Shirdi">Shirdi</option>
+                                    <option value="Shirgaon">Shirgaon</option>
+                                    <option value="Shirpur">Shirpur</option>
+                                    <option value="Shirwal">Shirwal</option>
+                                    <option value="Shivaji Nagar">Shivaji Nagar</option>
+                                    <option value="Shrigonda">Shrigonda</option>
+                                    <option value="Sillod">Sillod</option>
+                                    <option value="Sindhudurg">Sindhudurg</option>
+                                    <option value="Sindi">Sindi</option>
+                                    <option value="Sinnar">Sinnar</option>
+                                    <option value="Sirur">Sirur</option>
+                                    <option value="Solapur">Solapur</option>
+                                    <option value="Sonegaon">Sonegaon</option>
+                                    <option value="Soygaon">Soygaon</option>
+                                    <option value="Srivardhan">Srivardhan</option>
+                                    <option value="Surgana">Surgana</option>
+                                    <option value="Talegaon Dabhade">Talegaon Dabhade</option>
+                                    <option value="Taloda">Taloda</option>
+                                    <option value="Tarapur">Tarapur</option>
+                                    <option value="Tasgaon">Tasgaon</option>
+                                    <option value="Telhara">Telhara</option>
+                                    <option value="Thane">Thane</option>
+                                    <option value="Trimbak">Trimbak</option>
+                                    <option value="Tuljapur">Tuljapur</option>
+                                    <option value="Tumsar">Tumsar</option>
+                                    <option value="Udgir">Udgir</option>
+                                    <option value="Ulhasnagar">Ulhasnagar</option>
+                                    <option value="Umarga">Umarga</option>
+                                    <option value="Umarkhed">Umarkhed</option>
+                                    <option value="Umred">Umred</option>
+                                    <option value="Uran">Uran</option>
+                                    <option value="Vada">Vada</option>
+                                    <option value="Vaijapur">Vaijapur</option>
+                                    <option value="Varangaon">Varangaon</option>
+                                    <option value="Vasind">Vasind</option>
+                                    <option value="Vengurla">Vengurla</option>
+                                    <option value="Virar">Virar</option>
+                                    <option value="Vite">Vite</option>
+                                    <option value="Wadgaon">Wadgaon</option>
+                                    <option value="Wai">Wai</option>
+                                    <option value="Wani">Wani</option>
+                                    <option value="Wardha">Wardha</option>
+                                    <option value="Warora">Warora</option>
+                                    <option value="Warud">Warud</option>
+                                    <option value="Washim">Washim</option>
+                                    <option value="Yaval">Yaval</option>
+                                    <option value="Yavatmal">Yavatmal</option>
+                                    <option value="Yeola">Yeola</option>
+                                    
+                                </select>
+                                </div>
+                                <div style="float: left;">
+                                <label class="form-label" for="WifeHomeZip">Zip/Postal Code</label>
+                                <input type="text" id="WifeHomeZip" class="form-control" style="width:49%" [(ngModel)]="w_zip" name="w_zip"/>
+                                <br><br>
+                                </div>
+                                
+                                <hr>
+                                <br><br>
+                                <div class="col-sm-12 col-md-6 mb-3">
+                                    <label class="form-label" for="DateOfMarriage">Date Of Marriage</label>
+                                    <input type="date" class="form-control" id="DateOfMarriage"  [(ngModel)]="marriage_date" name="marriage_date" />
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-3">
+                                    <label class="form-label" for="WifeHomeZip">Mail Id</label>
+                                    <input type="text" id="WifeHomeZip" class="form-control" [(ngModel)]="m_mail" name="m_mail"/>
+                                    </div>  
+                            </div> 
+                        </div>
+                    </div> 
+            </div>
+        </div>
+      </div>
+              
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)=" addMarriage_save()" data-bs-dismiss="modal">Save</button>
+        </div>  
+    </div>  
+</div>    
+</div>
+
+<!------------------------ ----------------Leaving Certificate Modal Begins------------------------------------------>
+<div class="modal fade"  data-bs-backdrop="static" id="LeavingCertificateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="text-align: center; margin-top: 10px;">Leaving Certificate</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      
+      <div class="row my-3 mx-3 rounded-lg bg-white">
+        <div class="col-12 py-4 px-3">
+            <div class="row justify-content-around">
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="StudentName"><span
+                        class="required">Name Of The Student</span></label>
+                    <input type="text" id="StudentName" class="form-control" [(ngModel)]="s_name" name="s_name"/>
+                </div>
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="StudentMotherName"><span
+                        class="required">Mother Name</span></label>
+                    <input type="text" id="StudentMotherName" class="form-control" [(ngModel)]="mother" name="mother"/>
+                </div>
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label class="form-label" for="StudentEnrollmentNumber"><span
+                    class="required">Enrollment Number</span></label>
+                <input type="text" id="StudentEnrollmentNumber" class="form-control" [(ngModel)]="enroll" name="enroll"/>
+            </div>
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label class="form-label" for="StudantHomeState">State</label>
+                <select id="StudantHomeState" onchange="" name="StudantHomeState" class="form-control" [(ngModel)]="state" name="state">
+                    <option value="none">Choose</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                                       
+                </select>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudantHomeState">Student Nationality</label>
+                <select id="StudantNationality" onchange="" name="StudantNationality" class="form-control" [(ngModel)]="nationality" name="nationality">
+                    <option value="none">Choose</option>
+                    <option value="afghan">Afghan</option>
+                    <option value="albanian">Albanian</option>
+                    <option value="algerian">Algerian</option>
+                    <option value="american">American</option>
+                    <option value="andorran">Andorran</option>
+                    <option value="angolan">Angolan</option>
+                    <option value="antiguans">Antiguans</option>
+                    <option value="argentinean">Argentinean</option>
+                    <option value="armenian">Armenian</option>
+                    <option value="australian">Australian</option>
+                    <option value="austrian">Austrian</option>
+                    <option value="azerbaijani">Azerbaijani</option>
+                    <option value="bahamian">Bahamian</option>
+                    <option value="bahraini">Bahraini</option>
+                    <option value="bangladeshi">Bangladeshi</option>
+                    <option value="barbadian">Barbadian</option>
+                    <option value="barbudans">Barbudans</option>
+                    <option value="batswana">Batswana</option>
+                    <option value="belarusian">Belarusian</option>
+                    <option value="belgian">Belgian</option>
+                    <option value="belizean">Belizean</option>
+                    <option value="beninese">Beninese</option>
+                    <option value="bhutanese">Bhutanese</option>
+                    <option value="bolivian">Bolivian</option>
+                    <option value="bosnian">Bosnian</option>
+                    <option value="brazilian">Brazilian</option>
+                    <option value="british">British</option>
+                    <option value="bruneian">Bruneian</option>
+                    <option value="bulgarian">Bulgarian</option>
+                    <option value="burkinabe">Burkinabe</option>
+                    <option value="burmese">Burmese</option>
+                    <option value="burundian">Burundian</option>
+                    <option value="cambodian">Cambodian</option>
+                    <option value="cameroonian">Cameroonian</option>
+                    <option value="canadian">Canadian</option>
+                    <option value="cape verdean">Cape Verdean</option>
+                    <option value="central african">Central African</option>
+                    <option value="chadian">Chadian</option>
+                    <option value="chilean">Chilean</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="colombian">Colombian</option>
+                    <option value="comoran">Comoran</option>
+                    <option value="congolese">Congolese</option>
+                    <option value="costa rican">Costa Rican</option>
+                    <option value="croatian">Croatian</option>
+                    <option value="cuban">Cuban</option>
+                    <option value="cypriot">Cypriot</option>
+                    <option value="czech">Czech</option>
+                    <option value="danish">Danish</option>
+                    <option value="djibouti">Djibouti</option>
+                    <option value="dominican">Dominican</option>
+                    <option value="dutch">Dutch</option>
+                    <option value="east timorese">East Timorese</option>
+                    <option value="ecuadorean">Ecuadorean</option>
+                    <option value="egyptian">Egyptian</option>
+                    <option value="emirian">Emirian</option>
+                    <option value="equatorial guinean">Equatorial Guinean</option>
+                    <option value="eritrean">Eritrean</option>
+                    <option value="estonian">Estonian</option>
+                    <option value="ethiopian">Ethiopian</option>
+                    <option value="fijian">Fijian</option>
+                    <option value="filipino">Filipino</option>
+                    <option value="finnish">Finnish</option>
+                    <option value="french">French</option>
+                    <option value="gabonese">Gabonese</option>
+                    <option value="gambian">Gambian</option>
+                    <option value="georgian">Georgian</option>
+                    <option value="german">German</option>
+                    <option value="ghanaian">Ghanaian</option>
+                    <option value="greek">Greek</option>
+                    <option value="grenadian">Grenadian</option>
+                    <option value="guatemalan">Guatemalan</option>
+                    <option value="guinea-bissauan">Guinea-Bissauan</option>
+                    <option value="guinean">Guinean</option>
+                    <option value="guyanese">Guyanese</option>
+                    <option value="haitian">Haitian</option>
+                    <option value="herzegovinian">Herzegovinian</option>
+                    <option value="honduran">Honduran</option>
+                    <option value="hungarian">Hungarian</option>
+                    <option value="icelander">Icelander</option>
+                    <option value="indian">Indian</option>
+                    <option value="indonesian">Indonesian</option>
+                    <option value="iranian">Iranian</option>
+                    <option value="iraqi">Iraqi</option>
+                    <option value="irish">Irish</option>
+                    <option value="israeli">Israeli</option>
+                    <option value="italian">Italian</option>
+                    <option value="ivorian">Ivorian</option>
+                    <option value="jamaican">Jamaican</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="jordanian">Jordanian</option>
+                    <option value="kazakhstani">Kazakhstani</option>
+                    <option value="kenyan">Kenyan</option>
+                    <option value="kittian and nevisian">Kittian and Nevisian</option>
+                    <option value="kuwaiti">Kuwaiti</option>
+                    <option value="kyrgyz">Kyrgyz</option>
+                    <option value="laotian">Laotian</option>
+                    <option value="latvian">Latvian</option>
+                    <option value="lebanese">Lebanese</option>
+                    <option value="liberian">Liberian</option>
+                    <option value="libyan">Libyan</option>
+                    <option value="liechtensteiner">Liechtensteiner</option>
+                    <option value="lithuanian">Lithuanian</option>
+                    <option value="luxembourger">Luxembourger</option>
+                    <option value="macedonian">Macedonian</option>
+                    <option value="malagasy">Malagasy</option>
+                    <option value="malawian">Malawian</option>
+                    <option value="malaysian">Malaysian</option>
+                    <option value="maldivan">Maldivan</option>
+                    <option value="malian">Malian</option>
+                    <option value="maltese">Maltese</option>
+                    <option value="marshallese">Marshallese</option>
+                    <option value="mauritanian">Mauritanian</option>
+                    <option value="mauritian">Mauritian</option>
+                    <option value="mexican">Mexican</option>
+                    <option value="micronesian">Micronesian</option>
+                    <option value="moldovan">Moldovan</option>
+                    <option value="monacan">Monacan</option>
+                    <option value="mongolian">Mongolian</option>
+                    <option value="moroccan">Moroccan</option>
+                    <option value="mosotho">Mosotho</option>
+                    <option value="motswana">Motswana</option>
+                    <option value="mozambican">Mozambican</option>
+                    <option value="namibian">Namibian</option>
+                    <option value="nauruan">Nauruan</option>
+                    <option value="nepalese">Nepalese</option>
+                    <option value="new zealander">New Zealander</option>
+                    <option value="ni-vanuatu">Ni-Vanuatu</option>
+                    <option value="nicaraguan">Nicaraguan</option>
+                    <option value="nigerien">Nigerien</option>
+                    <option value="north korean">North Korean</option>
+                    <option value="northern irish">Northern Irish</option>
+                    <option value="norwegian">Norwegian</option>
+                    <option value="omani">Omani</option>
+                    <option value="pakistani">Pakistani</option>
+                    <option value="palauan">Palauan</option>
+                    <option value="panamanian">Panamanian</option>
+                    <option value="papua new guinean">Papua New Guinean</option>
+                    <option value="paraguayan">Paraguayan</option>
+                    <option value="peruvian">Peruvian</option>
+                    <option value="polish">Polish</option>
+                    <option value="portuguese">Portuguese</option>
+                    <option value="qatari">Qatari</option>
+                    <option value="romanian">Romanian</option>
+                    <option value="russian">Russian</option>
+                    <option value="rwandan">Rwandan</option>
+                    <option value="saint lucian">Saint Lucian</option>
+                    <option value="salvadoran">Salvadoran</option>
+                    <option value="samoan">Samoan</option>
+                    <option value="san marinese">San Marinese</option>
+                    <option value="sao tomean">Sao Tomean</option>
+                    <option value="saudi">Saudi</option>
+                    <option value="scottish">Scottish</option>
+                    <option value="senegalese">Senegalese</option>
+                    <option value="serbian">Serbian</option>
+                    <option value="seychellois">Seychellois</option>
+                    <option value="sierra leonean">Sierra Leonean</option>
+                    <option value="singaporean">Singaporean</option>
+                    <option value="slovakian">Slovakian</option>
+                    <option value="slovenian">Slovenian</option>
+                    <option value="solomon islander">Solomon Islander</option>
+                    <option value="somali">Somali</option>
+                    <option value="south african">South African</option>
+                    <option value="south korean">South Korean</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="sri lankan">Sri Lankan</option>
+                    <option value="sudanese">Sudanese</option>
+                    <option value="surinamer">Surinamer</option>
+                    <option value="swazi">Swazi</option>
+                    <option value="swedish">Swedish</option>
+                    <option value="swiss">Swiss</option>
+                    <option value="syrian">Syrian</option>
+                    <option value="taiwanese">Taiwanese</option>
+                    <option value="tajik">Tajik</option>
+                    <option value="tanzanian">Tanzanian</option>
+                    <option value="thai">Thai</option>
+                    <option value="togolese">Togolese</option>
+                    <option value="tongan">Tongan</option>
+                    <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
+                    <option value="tunisian">Tunisian</option>
+                    <option value="turkish">Turkish</option>
+                    <option value="tuvaluan">Tuvaluan</option>
+                    <option value="ugandan">Ugandan</option>
+                    <option value="ukrainian">Ukrainian</option>
+                    <option value="uruguayan">Uruguayan</option>
+                    <option value="uzbekistani">Uzbekistani</option>
+                    <option value="venezuelan">Venezuelan</option>
+                    <option value="vietnamese">Vietnamese</option>
+                    <option value="welsh">Welsh</option>
+                    <option value="yemenite">Yemenite</option>
+                    <option value="zambian">Zambian</option>
+                    <option value="zimbabwean">Zimbabwean</option>
+                                       
+                </select>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudentCaste"><span
+                    class="required">Caste Of Student</span></label>
+                <input type="text" id="StudentCaste" class="form-control" [(ngModel)]="caste" name="caste" />
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudentPlaceOfBirth"><span
+                    class="required">Student Place Of Birth</span></label>
+                <input type="text" id="StudentPlaceOfBirth" class="form-control" [(ngModel)]="birth_place" name="birth_place"/>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudentDateOfBirth">Student Date Of Birth</label>
+                <input type="date"id="StudentDateOfBirth"class="form-control" [(ngModel)]="birth_date" name="birth_date"/>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudentDateOfAdmission">Student Date Of Admission</label>
+                <input type="date"id="StudentDateOfAdmission"class="form-control" [(ngModel)]="ad_date" name="ad_date"/>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="StudentDateOfSchoolLeaving">Student Date Of School Leaving</label>
+                <input type="date"id="StudentDateOfSchoolLeaving"class="form-control" [(ngModel)]="leaving_date" name="leaving_date"/>
+            </div>
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label for="StudentSchoolLevingReason">Reason Of School Leaving</label>
+                <textarea class="form-control" id="StudentSchoolLevingReason" [(ngModel)]="reason" name="reason"></textarea>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="WifeHomeZip">Name of School/College</label>
+                <input type="text" id="WifeHomeZip" class="form-control" [(ngModel)]="school" name="school"/>
+                </div> 
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="WifeHomeZip">Mail Id</label>
+                <input type="text" id="WifeHomeZip" class="form-control" [(ngModel)]="l_mail" name="l_mail"/>
+                </div>  
+
+                
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="WifeHomeZip">Upload Photo</label>
+                    <input type="file" id="WifeHomeZip" class="form-control" (change)="onChange($event)" />
+                    </div>  
+                    <div class="col-sm-12 col-md-6 mb-3">
+                        <br>
+                        <button type="button" class="btn btn-primary"  (click)="onUpload()" style="width:fit-content; height: fit-content;margin-top: 6px;">Upload</button>
+                        </div>  
+                    
+            
+        </div>
+      </div>
+                                                    
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)=" addLeaving_save()" data-bs-dismiss="modal">Save</button>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Quizz Certificate Modal Begins -->
+
+<div class="modal fade"  data-bs-backdrop="static" id="QuizzCertificateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 style="text-align: center; margin-top: 10px;">Quiz Certificate</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+      <div class="row my-3 mx-3 rounded-lg bg-white">
+        <div class="col-12 py-4 px-3">
+            <div class="row justify-content-around">
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="NameOfTheParticipent">Name Of The Participant</label>
+                    <input type="text"id="NameOfTheParticipent"class="form-control" [(ngModel)]="q_name" name="q_name"/>
+                </div>
+                
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="NameOfTheOrganization"><span
+                        class="required">Full Name Of the Organization</span></label>
+                    <input type="text" id="NameOfTheOrganization" class="form-control" [(ngModel)]="q_organization" name="q_organization"/>   
+
+                </div>  
+                
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="IssuedDate"><span
+                        class="required">Date Of Issued</span></label>
+                    <input type="date" class="form-control" [(ngModel)]="q_date" name="q_date"/>
+                </div>
+   
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="QuizzName"><span
+                    class="required">Name Of The Quiz</span></label>
+                <input type="text" id="QuizzName" class="form-control" [(ngModel)]="quiz_name" name="quiz_name" />
+            </div>
+
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="QuizzScore"><span
+                    class="required">Venue of Quiz</span></label>
+                <input type="text" id="QuizzScore" class="form-control" [(ngModel)]="venue" name="venue"/>
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label class="form-label" for="ReasonForCertificate"><span
+                    class="required">Position</span></label>
+                    <select id="StudantNationality" onchange="" name="StudantNationality" class="form-control" [(ngModel)]="position" name="position">
+                        <option value="none">Choose</option>
+                        <option value="Winner">Winner</option>
+                        <option value="First Runner Up">First Runner Up</option>
+                        <option value="Second Runner Up">Second Runner Up</option>
+                        <option value="Participant">Participant</option>
+                    </select>
+            </div>
+            <div style="float: left;">
+                <label class="form-label" for="WifeHomeZip">Mail Id</label>
+                <input type="text" id="WifeHomeZip" class="form-control" style="width: 49%;" [(ngModel)]="q_mail" name="q_mail"/>
+                <br><br>
+                </div>  
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="quiz_certificate_save()" data-bs-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+
+
+
+
+<!-- Student's Achievements Certificate Modal Begins -->
+<div class="modal fade"  data-bs-backdrop="static" id="StudentAchievementsCertificateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title w-100 font-weight-bold" style="color:black;">Student's Achievements details</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="row my-3 mx-3 rounded-lg bg-white">
+        <div class="col-12 py-4 px-3">
+            <div class="row justify-content-around">
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="NameOfTheParticipentAchievement">Name Of The Participant</label>
+                    <input type="text"id="NameOfTheParticipentAchievement"class="form-control" [(ngModel)]="a_name" name="a_name"/>
+                </div>
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="NameOfTheOrganizationAchievement">Name Of The Organization</label>
+                    <input type="text"id="NameOfTheOrganizationAchievement"class="form-control" [(ngModel)]="a_organization" name="a_organization"/>
+                </div>
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="NameOfTheProgram">Program / Webinar / Course Name</label>
+                    <input type="text"id="NameOfTheProgram"class="form-control" [(ngModel)]="program" name="program"/>
+                </div>
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label class="form-label" for="ScoreMarks">Venue</label>
+                    <input type="text"id="ScoreMarks"class="form-control" [(ngModel)]="s_place" name="s_place"/>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="IssuDate">Date Of Certificate Issue</label>
+                    <input type="date"id="IssuDate"class="form-control" [(ngModel)]="a_issue_date" name="a_issue_date"/>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <label class="form-label" for="WifeHomeZip">Mail Id</label>
+                    <input type="text" id="WifeHomeZip" class="form-control" [(ngModel)]="s_mail" name="s_mail"/>
+                    </div>  
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)=" student_certificate_save()" data-bs-dismiss="modal">Save</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

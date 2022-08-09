@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" (click)="home()">Certify</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a  (click)="home()">Home </a>
+        </li> &nbsp;&nbsp;
+       
+      </ul>
+      
+    </div>
+  </nav>
+                         
+
+
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="sect1 d-flex h-100">
+            <img  src="assets/icon1.png"   class="img1">
+        </div>
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="assets/icon.png" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                
+                <form>
+                   
+                        <h4 style="color: rgb(104, 103, 103);text-align: center;">User</h4>
+                        <br>
+                       
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control input_user" value="" placeholder="username" [(ngModel)]="user" name= "user">
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control input_pass" value="" placeholder="password" [(ngModel)]="pass" name= "pass">
+                    </div>
+                    
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                 <button type="button" name="button" class="btn login_btn" (click)="dashboard()" >Login</button>
+               </div>
+                </form>
+            </div>
+    
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    If an Admin? 
+                    <input type="button"  value="Login as Admin" (click)=" loginadmin()" class="butn">
+                </div>
+                <!-- <div class="d-flex justify-content-center links">
+                    <a href="#">Forgot your password?</a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
