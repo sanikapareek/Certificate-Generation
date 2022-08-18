@@ -17,6 +17,9 @@ export class MarriageCertificateComponent implements OnInit {
   husband:any
   wife:any
   item:any=[]
+  image_husband:any
+  image_wife:any
+  marriage_date:any
 
   @ViewChild('pdfTable')
   pdfTable!: ElementRef;
@@ -35,6 +38,14 @@ export class MarriageCertificateComponent implements OnInit {
     this.service.getMarriage(this.marriage,this.husband,this.wife).subscribe((response:any)=>{
       console.log(response);
       this.item=response;
+      console.log(this.item[0].image_husband," ",this.item[0].image_wife);
+      this.image_husband="/api/uploads/"+this.item[0].image_husband;
+      this.image_wife="/api/uploads/"+this.item[0].image_wife;
+      this.marriage_date=this.item[0].marriage_date.substring(0,10);
+      console.log("Hello:",this.marriage_date);
+      console.log(this.image_husband);
+      console.log(this.image_wife);
+
       console.log(this.item[0]);
           }),(error: any)=>{
             console.log("There is some error in getting the data from the server");

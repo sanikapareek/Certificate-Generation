@@ -20,6 +20,7 @@ export class ReportComponent implements OnInit {
   student:any=[]
   leaving:any=[]
   quiz:any=[]
+  curr_date1=""
 
   show1=false
 
@@ -37,7 +38,7 @@ export class ReportComponent implements OnInit {
   reportGenerate(){
     this.show1=true;
 
-    this.service.getStudentFull(this.curr_date).subscribe((response:any)=>{
+    this.service.getStudentFull(this.curr_date,this.curr_date1).subscribe((response:any)=>{
       console.log(response);
       this.student=response;
       console.log(this.student[0]);
@@ -46,7 +47,7 @@ export class ReportComponent implements OnInit {
             
           }
 
-          this.service.getQuizFull(this.curr_date).subscribe((response:any)=>{
+          this.service.getQuizFull(this.curr_date,this.curr_date1).subscribe((response:any)=>{
             console.log(response);
             this.quiz=response;
             console.log(this.quiz[0]);
@@ -54,15 +55,17 @@ export class ReportComponent implements OnInit {
                   console.log("There is some error in getting the data from the server");
                   
                 }
-                this.service.getMarriageFull(this.curr_date).subscribe((response:any)=>{
+                this.service.getMarriageFull(this.curr_date,this.curr_date1).subscribe((response:any)=>{
                   console.log(response);
                   this.marriage=response;
+                  
+                  console.log(this.curr_date," ",this.curr_date1)
                   console.log(this.marriage[0]);
                       }),(error: any)=>{
                         console.log("There is some error in getting the data from the server");
                         
                       }
-                      this.service.getLeavingFull(this.curr_date).subscribe((response:any)=>{
+                      this.service.getLeavingFull(this.curr_date,this.curr_date1).subscribe((response:any)=>{
                         console.log(response);
                         this.leaving=response;
                         console.log(this.leaving[0]);
@@ -100,7 +103,17 @@ export class ReportComponent implements OnInit {
   }
 
   downloadFile() {
-    const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
+    if(this.student.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No Records',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+      return;
+    }else{
+const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
     const header = Object.keys(this.student[0]);
     const csv = this.student.map((row:any) =>
       header
@@ -119,71 +132,107 @@ export class ReportComponent implements OnInit {
     a.click();
     window.URL.revokeObjectURL(url);
     a.remove();
+    }
+    
   }
   downloadFile_quiz() {
-    const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
-    const header = Object.keys(this.quiz[0]);
-    const csv = this.student.map((row:any) =>
-      header
-        .map((fieldName) => JSON.stringify(row[fieldName], replacer))
-        .join(',')
-    );
-    csv.unshift(header.join(','));
-    const csvArray = csv.join('\r\n');
-  
-    const a = document.createElement('a');
-    const blob = new Blob([csvArray], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-  
-    a.href = url;
-    a.download = 'Quiz.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
+    if(this.quiz.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No Records',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+    }else{
+      const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
+      const header = Object.keys(this.quiz[0]);
+      const csv = this.quiz.map((row:any) =>
+        header
+          .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+          .join(',')
+      );
+      csv.unshift(header.join(','));
+      const csvArray = csv.join('\r\n');
+    
+      const a = document.createElement('a');
+      const blob = new Blob([csvArray], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+    
+      a.href = url;
+      a.download = 'Quiz.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }
+    
   }
 
   downloadFile_marriage() {
-    const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
-    const header = Object.keys(this.marriage[0]);
-    const csv = this.student.map((row:any) =>
-      header
-        .map((fieldName) => JSON.stringify(row[fieldName], replacer))
-        .join(',')
-    );
-    csv.unshift(header.join(','));
-    const csvArray = csv.join('\r\n');
-  
-    const a = document.createElement('a');
-    const blob = new Blob([csvArray], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-  
-    a.href = url;
-    a.download = 'Marriage.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
+    if(this.marriage.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No Records',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+    }else{
+      const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
+      const header = Object.keys(this.marriage[0]);
+      const csv = this.marriage.map((row:any) =>
+        header
+          .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+          .join(',')
+      );
+      csv.unshift(header.join(','));
+      const csvArray = csv.join('\r\n');
+    
+      const a = document.createElement('a');
+      const blob = new Blob([csvArray], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+    
+      a.href = url;
+      a.download = 'Marriage.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }
+    
   }
 
   downloadFile_leaving() {
-    const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
-    const header = Object.keys(this.leaving[0]);
-    const csv = this.student.map((row:any) =>
-      header
-        .map((fieldName) => JSON.stringify(row[fieldName], replacer))
-        .join(',')
-    );
-    csv.unshift(header.join(','));
-    const csvArray = csv.join('\r\n');
-  
-    const a = document.createElement('a');
-    const blob = new Blob([csvArray], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-  
-    a.href = url;
-    a.download = 'Leaving.csv';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    a.remove();
+    console.log(this.leaving)
+    if(this.leaving.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No Records',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+    }else{
+      const replacer = (key:any, value:any) => (value === null ? '' : value); // specify how you want to handle null values here
+      const header = Object.keys(this.leaving[0]);
+      const csv = this.leaving.map((row:any) =>
+        header
+          .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+          .join(',')
+      );
+      csv.unshift(header.join(','));
+      const csvArray = csv.join('\r\n');
+    
+      const a = document.createElement('a');
+      const blob = new Blob([csvArray], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+    
+      a.href = url;
+      a.download = 'Leaving.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }
+    
   }
 
 }

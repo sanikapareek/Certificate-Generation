@@ -34,7 +34,7 @@ export class LeavingCertificateComponent implements OnInit {
   this.leaving_name=localStorage.getItem("leaving_name");
     this.service.getLeaving(this.leaving,this.leaving_name).subscribe((response:any)=>{
       console.log(response);
-      this.item=response['leaving_data'];
+      this.item=response;
       this.image_name="/api/uploads/"+this.item[0].image;
       console.log(this.image_name);
       console.log(this.item[0]);

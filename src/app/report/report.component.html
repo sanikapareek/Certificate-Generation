@@ -35,15 +35,30 @@
   </nav>
 
   <div class="col-sm-12 col-md-6 mb-3" style="margin-top: 10px;float: left;">
-    <label class="form-label" for="IssuDate">Report of Date </label>
+    <label class="form-label" for="IssuDate">From </label>
     <input type="date"id="IssuDate"class="form-control" [(ngModel)]="curr_date" name="curr_date"/>
     
  </div>
+ <div class="col-sm-12 col-md-6 mb-3" style="margin-top: 10px;float: left;">
+  <label class="form-label" for="IssuDate">To </label>
+  <input type="date"id="IssuDate"class="form-control" [(ngModel)]="curr_date1" name="curr_date1"/>
+  
+</div>
 
- <form style="margin-left: 800px;margin-top: 40px;">
+ <form style="margin-top: 40px;margin-left: 600px;">
     <button type="button" name="button" class="btn login_btn" (click)="reportGenerate()">Generate Report</button>
  </form>
-<div *ngIf="show1" style="margin-top: 40px;">
+
+ 
+ <br><br>
+ <div *ngIf="show1">
+  <button type="submit" class="btn login_btn" style="margin-left: 100px;width: fit-content;" (click)="downloadFile_marriage()">Download Report of Marriage Certificate</button> &nbsp;&nbsp;
+  <button type="submit" class="btn login_btn" style="width: fit-content;" (click)="downloadFile_leaving()">Download Report of Leaving Certificate</button>&nbsp;&nbsp;
+  <button type="submit" class="btn login_btn" style=" width: fit-content;" (click)="downloadFile_quiz()">Download Report of Quiz Certificate</button>&nbsp;&nbsp;
+  <button type="submit" class="btn login_btn" style=" width: fit-content;" (click)="downloadFile()">Download Report of Student Achievement Certificate</button>
+ </div>
+ 
+ <div style="margin-top: 40px;display: none;">
     <h3 style="text-align: center;font-family:cursive;">Marriage Certificate</h3>
     <br>
     <table >

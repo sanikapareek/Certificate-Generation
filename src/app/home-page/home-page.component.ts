@@ -141,6 +141,15 @@ export class HomePageComponent implements OnInit {
   }
   quiz_certificate_save(){
     let date:Date
+    if(this.q_name==""||this.q_organization==""||this.q_date==""||this.quiz_name==""||this.venue==""||this.position==""||this.q_mail==""||this.curr_date==""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error Occurred',
+        text: 'Fill in all Details',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+    }
     this.service.quizAdd(this.q_name,this.q_organization,this.q_date,this.quiz_name,this.venue,this.position,this.q_mail,this.curr_date).subscribe((response:any)=>{
       console.log(response);
       this.mail_quiz = this.q_mail;
@@ -172,32 +181,43 @@ export class HomePageComponent implements OnInit {
   }
 
   student_certificate_save(){
-    this.service.studentAdd(this.a_name,this.a_organization,this.program,this.s_place,this.a_issue_date,this.s_mail,this.curr_date).subscribe((response:any)=>{
-      console.log(response);
-      this.mail_student = this.s_mail;
-      localStorage.setItem("student",this.mail_student);
-      this.student_name = this.a_name;
-      localStorage.setItem("student_name",this.student_name);
-      console.log(this.mail_student+" "+this.s_mail+" "+this.program+" "+this.s_place+" "+this.a_issue_date+" "+this.s_name+" "+this.student_name);
-        Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Data Added Successfully!',
+    if(this.a_name=="" || this.a_organization=="" || this.program=="" || this.s_place=="" || this.a_issue_date=="" || this.s_mail=="" || this.curr_date=="" ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error Occurred',
+        text: 'Fill in all Details',
         confirmButtonColor: "#0059b3",
         showCancelButton: false
       });
-      this.router.navigate(['./student']);
-          }),(error: any)=>{
-            Swal.fire({
-              icon: 'error',
-              title: 'Error Occurred',
-              text: 'Error!',
-              confirmButtonColor: "#0059b3",
-              showCancelButton: false
-            });
-            console.log("There is some error in getting the data from the server");
-            
-          }
+    }else{
+      this.service.studentAdd(this.a_name,this.a_organization,this.program,this.s_place,this.a_issue_date,this.s_mail,this.curr_date).subscribe((response:any)=>{
+        console.log(response);
+        this.mail_student = this.s_mail;
+        localStorage.setItem("student",this.mail_student);
+        this.student_name = this.a_name;
+        localStorage.setItem("student_name",this.student_name);
+        console.log(this.mail_student+" "+this.s_mail+" "+this.program+" "+this.s_place+" "+this.a_issue_date+" "+this.s_name+" "+this.student_name);
+          Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Data Added Successfully!',
+          confirmButtonColor: "#0059b3",
+          showCancelButton: false
+        });
+        this.router.navigate(['./student']);
+            }),(error: any)=>{
+              Swal.fire({
+                icon: 'error',
+                title: 'Error Occurred',
+                text: 'Error!',
+                confirmButtonColor: "#0059b3",
+                showCancelButton: false
+              });
+              console.log("There is some error in getting the data from the server");
+              
+            }
+    }
+    
           
   }
   home(){
@@ -227,14 +247,64 @@ export class HomePageComponent implements OnInit {
   }
 
   addMarriage_save(){
-    this.service.marriageAdd(this.h_name,this.h_religion,this.h_status,this.h_birth,this.h_street,this.h_state,this.h_city,this.h_zip,this.w_name,this.w_religion,this.w_status,this.w_birth,this.w_street,this.w_state,this.w_city,this.w_zip,this.marriage_date,this.m_mail,this.curr_date).subscribe((response:any)=>{
+    if(this.h_name=="" || this.h_religion=="" || this.h_status=="" || this.h_birth=="" || this.h_street=="" ||this.h_state=="" || this.h_city=="" || this.h_zip=="" || this.w_name=="" || this.w_religion==""||this.w_status==""||this.w_birth==""||this.w_street==""||this.w_state==""||this.w_city==""||this.w_zip==""||this.marriage_date==""||this.m_mail==""||this.curr_date==""){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error Occurred',
+        text: 'Fill in all Details',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+    }else{
+      this.service.marriageAdd(this.h_name,this.h_religion,this.h_status,this.h_birth,this.h_street,this.h_state,this.h_city,this.h_zip,this.w_name,this.w_religion,this.w_status,this.w_birth,this.w_street,this.w_state,this.w_city,this.w_zip,this.marriage_date,this.m_mail,this.curr_date).subscribe((response:any)=>{
+        console.log(response);
+        this.mail_marriage = this.m_mail;
+        localStorage.setItem("marriage",this.mail_marriage);
+        this.husband = this.h_name;
+        localStorage.setItem("husband",this.h_name);
+        this.wife = this.w_name;
+        localStorage.setItem("wife",this.wife);
+          Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Data Added Successfully!',
+          confirmButtonColor: "#0059b3",
+          showCancelButton: false
+        });
+        this.router.navigate(['./marriage']);
+            }),(error: any)=>{
+              Swal.fire({
+                icon: 'error',
+                title: 'Error Occurred',
+                text: 'Error!',
+                confirmButtonColor: "#0059b3",
+                showCancelButton: false
+              });
+              console.log("There is some error in getting the data from the server");
+              
+            }
+    }
+    
+  this.show=false;
+}
+
+addLeaving_save(){
+
+  if(this.s_name=="" || this.mother=="" || this.enroll=="" || this.state==""||this.nationality==""||this.caste==""||this.birth_date==""||this.birth_place==""||this.ad_date==""||this.leaving_date==""||this.reason=="",this.l_mail==""||this.curr_date==""||this.school==""){
+    Swal.fire({
+      icon: 'error',
+      title: 'Error Occurred',
+      text: 'Fill in all Details',
+      confirmButtonColor: "#0059b3",
+      showCancelButton: false
+    });
+  }else{
+    this.service.leavingAdd(this.s_name,this.mother,this.enroll,this.state,this.nationality,this.caste,this.birth_date,this.birth_place,this.ad_date,this.leaving_date,this.reason,this.l_mail,this.curr_date,this.school).subscribe((response:any)=>{
       console.log(response);
-      this.mail_marriage = this.m_mail;
-      localStorage.setItem("marriage",this.mail_marriage);
-      this.husband = this.h_name;
-      localStorage.setItem("husband",this.h_name);
-      this.wife = this.w_name;
-      localStorage.setItem("wife",this.wife);
+      this.mail_leaving= this.l_mail;
+      localStorage.setItem("leaving",this.mail_leaving);
+      this.leaving_name = this.s_name;
+        localStorage.setItem("leaving_name",this.leaving_name);
         Swal.fire({
         icon: 'success',
         title: 'Success',
@@ -242,48 +312,20 @@ export class HomePageComponent implements OnInit {
         confirmButtonColor: "#0059b3",
         showCancelButton: false
       });
-      this.router.navigate(['./marriage']);
+      this.router.navigate(['./leaving']);
           }),(error: any)=>{
             Swal.fire({
               icon: 'error',
               title: 'Error Occurred',
-              text: 'Error!',
+              text: 'User with this mail id already exists!',
               confirmButtonColor: "#0059b3",
               showCancelButton: false
             });
             console.log("There is some error in getting the data from the server");
             
           }
-  this.show=false;
-}
-
-addLeaving_save(){
-
-  this.service.leavingAdd(this.s_name,this.mother,this.enroll,this.state,this.nationality,this.caste,this.birth_date,this.birth_place,this.ad_date,this.leaving_date,this.reason,this.l_mail,this.curr_date,this.school).subscribe((response:any)=>{
-    console.log(response);
-    this.mail_leaving= this.l_mail;
-    localStorage.setItem("leaving",this.mail_leaving);
-    this.leaving_name = this.s_name;
-      localStorage.setItem("leaving_name",this.leaving_name);
-      Swal.fire({
-      icon: 'success',
-      title: 'Success',
-      text: 'Data Added Successfully!',
-      confirmButtonColor: "#0059b3",
-      showCancelButton: false
-    });
-    this.router.navigate(['./leaving']);
-        }),(error: any)=>{
-          Swal.fire({
-            icon: 'error',
-            title: 'Error Occurred',
-            text: 'User with this mail id already exists!',
-            confirmButtonColor: "#0059b3",
-            showCancelButton: false
-          });
-          console.log("There is some error in getting the data from the server");
-          
-        }
+  }
+  
 this.show=false;
 }
 
@@ -294,22 +336,75 @@ onChange(event:any) {
     const file=event.target.files[0];
     this.img_up1 = file;
     console.log(this.img_up1.name+" "+this.img_up1);
-  }
-         
-        
-        
+  }      
     }
 
 //   // OnClick of button Upload
   onUpload() {
+    if(this.img_up1.size>1048576){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'File size should be less than 1MB',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+      this.img_up1=""
+    }else{
+      const formData=new FormData();
+      formData.append('file',this.img_up1);
+      console.log(formData);
+      this.http.post<any>('/api/file',formData).subscribe((response:any)=>{
+        (response:any)=>console.log(response);
+        (error:any)=>console.log(error);
+      });
+    }
+
     
-    const formData=new FormData();
-    formData.append('file',this.img_up1);
-    console.log(formData);
-    this.http.post<any>('/api/file',formData).subscribe((response:any)=>{
-      (response:any)=>console.log(response);
-      (error:any)=>console.log(error);
-    });
+  }
+
+  onUpload1() {
+    if(this.img_up1.size>1048576){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'File size should be less than 1MB',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+      this.img_up1=""
+    }else{
+      const formData=new FormData();
+      formData.append('husband',this.img_up1);
+      console.log(formData);
+      this.http.post<any>('/api/husband',formData).subscribe((response:any)=>{
+        (response:any)=>console.log(response);
+        (error:any)=>console.log(error);
+      });
+    }
+    
+  }
+
+  onUpload2() {
+    if(this.img_up1.size>1048576){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'File size should be less than 1MB',
+        confirmButtonColor: "#0059b3",
+        showCancelButton: false
+      });
+      this.img_up1=""
+    }else{
+      const formData=new FormData();
+      formData.append('wife',this.img_up1);
+      console.log(formData);
+      this.http.post<any>('/api/wife',formData).subscribe((response:any)=>{
+        (response:any)=>console.log(response);
+        (error:any)=>console.log(error);
+      });
+    }
+   
   }
 
 

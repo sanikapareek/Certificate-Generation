@@ -68,44 +68,25 @@ export class AppServiceService {
     return this.http.post('/api/getLeaving',{'mail':mail,'name':name});
   }
 
-  getQuizFull(curr_date:string){
-    return this.http.post('\api\getQuizFull',{'q_date':curr_date});
+  getQuizFull(curr_date:string,curr_date1:string){
+    return this.http.post('\api\getQuizFull',{'q_date':curr_date,'curr_date':curr_date1});
   }
 
-  getMarriageFull(curr_date:string){
-    return this.http.post('\api\getMarriageFull',{'m_date':curr_date});
+  getMarriageFull(curr_date:string,curr_date1:string){
+    return this.http.post('\api\getMarriageFull',{'m_date':curr_date,'curr_date':curr_date1});
   }
 
-  getLeavingFull(curr_date:string){
-    return this.http.post('\api\getLeavingFull',{'l_date':curr_date});
+  getLeavingFull(curr_date:string,curr_date1:string){
+    return this.http.post('\api\getLeavingFull',{'l_date':curr_date,'curr_date':curr_date1});
   }
 
-  getStudentFull(curr_date:string){
-    return this.http.post('\api\getStudentFull',{'s_date':curr_date});
+  getStudentFull(curr_date:string,curr_date1:string){
+    return this.http.post('\api\getStudentFull',{'s_date':curr_date,'curr_date':curr_date1});
   }
 
   
 
-//   postFile(fileToUpload: File): Observable<boolean> {
-//     const endpoint = '../assets/';
-//     const formData: FormData = new FormData();
-//     formData.append('fileKey', fileToUpload, fileToUpload.name);
-//     return this.http.post(endpoint, formData, { })
-//       .pipe(map(() => { return true; }));
-// }
 
-// upload(file: File): Observable<HttpEvent<any>> {
-//   const formData: FormData = new FormData();
-//   formData.append('file', file);
-//   const req = new HttpRequest('POST', '/api/upload', formData, {
-//     reportProgress: true,
-//     responseType: 'json'
-//   });
-//   return this.http.request(req);
-// }
-// getFiles(): Observable<any> {
-//   return this.http.get('/api/uploads');
-// }
 
 
   
